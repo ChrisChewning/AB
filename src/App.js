@@ -8,12 +8,48 @@ class App extends Component {
   componentWillMount() { //get data.
     this.props.getPosts();
   }
+
+//this takes in a field so we'll pass in one specific field.
+//backtick allows us to do string interpolation and skip concatenation.
+//the ... flattens out the object into antoher one. you can combine two objects together. makes another object with its keys and add another key onto it.
+
+  renderField(field){
+    return (
+      <input type="text"
+      placeholder={`Enter a ${field.label}...`} {...field.input}
+    />
+    )
+  }
+
+  onSubmit(values){ //title and body. this will have all our values.
+
+  }
+
   renderPosts(){
     return _.map(this.props.posts, (post, key) => {
+      const { handleSubmit } = this.props;
       return (
         <div>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
+          <div>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
+          </div>
+          <div>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+              <Field
+                name="title"
+                component={this.renderField}
+                label="Title"
+                class=""
+              />
+              <Field
+                name="body"
+                component={this.renderField}
+                label="Body"
+                class=""
+              />
+            </form>
+          </div>
       </div>
     );
   });
