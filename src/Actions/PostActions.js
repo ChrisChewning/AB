@@ -12,7 +12,7 @@ export function getPosts(){
   }
 }
 
-//Lifecycle...
+//Lifecycle.......
 //1. our action is getPosts.
 //2. action sends to middleware redux-thunk.
 
