@@ -30,26 +30,8 @@ class App extends Component {
       const { handleSubmit } = this.props;
       return (
         <div>
-          <div>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-          </div>
-          <div>
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-              <Field
-                name="title"
-                component={this.renderField}
-                label="Title"
-                class=""
-              />
-              <Field
-                name="body"
-                component={this.renderField}
-                label="Body"
-                class=""
-              />
-            </form>
-          </div>
+        <h3>{post.title}</h3>
+        <p>{post.body}</p>
       </div>
     );
   });
